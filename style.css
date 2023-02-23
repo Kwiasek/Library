@@ -26,17 +26,27 @@ nav {
     font-size: 1.4rem;
 }
 
+main {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
 .card {
-    width: 200px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
     position: relative;
+    height: 300px;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     background: #bae6fd;
     padding: 15px;
     border-radius: 20px;
     justify-content: center;
     gap: 18px;
+    -webkit-box-shadow: 8px 6px 13px -7px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 6px 13px -7px rgba(66, 68, 90, 1);
+    box-shadow: 8px 6px 13px -7px rgba(66, 68, 90, 1);
 }
 
 .card .close {
@@ -53,15 +63,107 @@ nav {
     cursor: pointer;
 }
 
-.card .read {
+.card .title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0c4a6e;
+}
 
+.read{
+    height: 40px;   
+    border-radius: 20px;
+    font-size: 1.02rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.read-true {
+    border: 1px solid #059669;
+    background: #4ade80;
+    color: #14532d;
+}
+
+.read-false {
+    border: 1px solid #e11d48;
+    background: #fb7185;
+    color: #881337;
+}
+
+.add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    color: #075985;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border: 3px dashed #075985;
+    border-radius: 20px;
+    height: 300px;
 }
 
 form {
-    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    transform: translateY(-50%);
+    transform: translateX(-70%);
+    transform: translateY(-60%);
+    width: 300px;
+    background: #075985;
+    color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+form label {
+    font-size: 1.3rem;
+}
+
+form input {
+    height: 1.8rem;
+    width: 25ch;
+    border: none;
+    border-radius: 20px;
+    text-indent: 15px;
+    font-size: 1.2rem;
+    background: #e0f2fe;
+}
+
+form input:focus {
+    outline: none;
+}
+
+form button {
+    background: #e0f2fe;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #075985;
+}
+
+form select {
+    padding: 10px;
+    font-size: 1.1rem;
+}
+
+form select:focus {
+    outline: none;
+}
+
+.close-add {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    padding: 15px;
+    cursor: pointer;
 }

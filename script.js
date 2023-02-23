@@ -1,14 +1,14 @@
 let myLibrary = [
     {
-        title: 'Title',
-        author: 'Author',
-        pages: 'Pages',
-        read: 'Read?'
+        title: 'Inny świat',
+        author: 'Gustaw Herling-Grudziński',
+        pages: 301 + ' pages',
+        read: false
     },
     {
         title: 'Hobbit',
         author: 'J.R.R. Tolkien',
-        pages: 297,
+        pages: 297 + ' pages',
         read: true
     }
 ];
@@ -19,9 +19,6 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }
-
-Book.prototype.info = function() {
-    return `${title} by ${author}, ${pages} pages, ${read ? 'read' : 'not read yet'}`;}
 
 function addBookToLibrary(event) {
     event.preventDefault();
@@ -36,14 +33,18 @@ function addBookToLibrary(event) {
 
 const displayBooks = (myLibrary) => {
     let result = '';
-    const table = document.querySelector('table');
-    myLibrary.map(book => result += `<tr>
-        <td>${book.title}</td>
-        <td>${book.author}</td>
-        <td>${book.pages}</td>
-        <td>${book.read === true ? 'Yes' : book.read === false ? 'No' : book.read}</td>
-    </tr>`)
-    table.innerHTML = result;
+    const container = document.querySelector('main');
+    myLibrary.map(book => result += `
+    <div class="card">
+        <button class="close">X</button>
+        <p class="title">${book.title}</p>
+        <p class="author">${book.author}</p>
+        <p class="pages">${book.pages}</p>
+        <button class="read read-${book.read}">${book.read == true ? 'Read' : 'Not-read'}</button>
+    </div>
+    `)
+    container.innerHTML = result;
+    container.innerHTML += '<span class="add-book">+ Add book</span>'
 }
 
 displayBooks(myLibrary);
