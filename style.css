@@ -3,10 +3,7 @@
 body {
     background: #e0f2fe;
     font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    width: 100vw;
     font-size: 1.1rem;
-    position: relative;
 }
 
 * {
@@ -14,6 +11,8 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+
+
 
 nav {
     height: 8vh;
@@ -102,12 +101,13 @@ main {
     height: 300px;
 }
 
-form {
+
+.form {
     position: absolute;
-    top: 50%;
+    z-index: 2;
     left: 50%;
-    transform: translateX(-70%);
-    transform: translateY(-60%);
+    top: 50%;
+    transform: translate(-50%,-50%);
     width: 300px;
     background: #075985;
     color: white;
@@ -119,13 +119,29 @@ form {
     gap: 10px;
     border-radius: 20px;
     text-align: center;
+    animation-name: addBook;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
 }
 
-form label {
+@keyframes addBook {
+    from {
+        transform: translate(-50%, -30%);
+    }
+    to {
+        transform: translate(-50%,-50%);
+    }
+}
+
+.invisible {
+    display: none;
+}
+
+.form label {
     font-size: 1.3rem;
 }
 
-form input {
+.form input {
     height: 1.8rem;
     width: 25ch;
     border: none;
@@ -135,11 +151,11 @@ form input {
     background: #e0f2fe;
 }
 
-form input:focus {
+.form input:focus {
     outline: none;
 }
 
-form button {
+.form button {
     background: #e0f2fe;
     padding: 10px;
     border: none;
@@ -149,12 +165,12 @@ form button {
     color: #075985;
 }
 
-form select {
+.form select {
     padding: 10px;
     font-size: 1.1rem;
 }
 
-form select:focus {
+.form select:focus {
     outline: none;
 }
 

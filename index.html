@@ -47,11 +47,11 @@
                 <p class="pages">297 pages</p>
                 <button class="read read-true">Read</button>
             </div>
-            <span class="add-book">+ Add book</span>
+            <span class="add-book" onclick="displayForm()">+ Add book</span>
         </main>
     </div>
-    <form>
-        <span class="close-add">X</span>
+    <div class="form invisible">
+        <span class="close-add" onclick="displayForm()">X</span>
         <label for="title">Enter books title</label>
         <input type="text" name="title" id="title">
         <label for="author">Enter books author</label>
@@ -63,8 +63,7 @@
             <option value="true" >Yes</option>
             <option value="false">No</option>
         </select>
-        <button>Add book</button>
-
+        <button class="send-form">Add book</button>
     </form>
 </body>
 </html>

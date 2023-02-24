@@ -20,8 +20,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary(event) {
-    event.preventDefault();
+function addBookToLibrary() {
     let title = document.querySelector('#title').value
     let author = document.querySelector('#author').value
     let pages = document.querySelector('#pages').value
@@ -29,6 +28,11 @@ function addBookToLibrary(event) {
 
     myLibrary.push(new Book(title, author, pages, read));
     displayBooks(myLibrary);
+    displayForm()
+}
+
+function removeBookFromLibrary(book) {
+    
 }
 
 const displayBooks = (myLibrary) => {
@@ -44,9 +48,13 @@ const displayBooks = (myLibrary) => {
     </div>
     `)
     container.innerHTML = result;
-    container.innerHTML += '<span class="add-book">+ Add book</span>'
+    container.innerHTML += '<span class="add-book" onclick="displayForm()">+ Add book</span>'
+}
+
+const displayForm = () => {
+    document.querySelector('.form').classList.toggle('invisible');
 }
 
 displayBooks(myLibrary);
 
-document.querySelector('button').addEventListener('click', addBookToLibrary);
+document.querySelector('.send-form').addEventListener('click', addBookToLibrary);
