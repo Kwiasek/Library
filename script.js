@@ -1,17 +1,4 @@
-let myLibrary = [
-    {
-        title: 'Inny świat',
-        author: 'Gustaw Herling-Grudziński',
-        pages: 301 + ' pages',
-        read: false
-    },
-    {
-        title: 'Hobbit',
-        author: 'J.R.R. Tolkien',
-        pages: 297 + ' pages',
-        read: true
-    }
-];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -19,6 +6,9 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }
+
+
+myLibrary.push(new Book('Hoobit', 'Tolkien', 301, false));
 
 function addBookToLibrary() {
     let title = document.querySelector('#title').value
@@ -31,8 +21,30 @@ function addBookToLibrary() {
     displayForm()
 }
 
-function removeBookFromLibrary(book) {
-    
+
+function removeBookFromLibrary() {
+    document.querySelectorAll('.close').forEach((closeBtn) => {
+        closeBtn.addEventListener('click', (e) => {
+            console.log(e)
+        })
+    })
+}
+
+
+//Listening for click on 'read' button and changing its appearance depending on if it's read or not.
+const checkRead = () => {
+    document.querySelectorAll('.read').forEach((read) => {
+        read.addEventListener('click', () => {
+            read.classList.toggle('read-true');
+            read.classList.toggle('read-false');
+            if (read.classList.contains('read-true')) {
+                read.textContent = 'Read';
+            }
+            if (read.classList.contains('read-false')) {
+                read.textContent = 'Not-read';
+            }
+        })
+    })
 }
 
 const displayBooks = (myLibrary) => {
@@ -48,7 +60,14 @@ const displayBooks = (myLibrary) => {
     </div>
     `)
     container.innerHTML = result;
-    container.innerHTML += '<span class="add-book" onclick="displayForm()">+ Add book</span>'
+    container.innerHTML += '<span class="add-book" onclick="displayForm()">+ Add book</span>';
+    checkRead();
+    //adding unique id's for every book in myLibrary array
+    for (let book in myLibrary) {
+        myLibrary[book].id = book;
+    }
+
+    removeBookFromLibrary()
 }
 
 const displayForm = () => {
@@ -58,3 +77,5 @@ const displayForm = () => {
 displayBooks(myLibrary);
 
 document.querySelector('.send-form').addEventListener('click', addBookToLibrary);
+
+
